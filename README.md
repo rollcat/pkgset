@@ -18,3 +18,7 @@ The documentation is available as a man page (see `man pkgset`).
 # Why?
 
 After using NixOS too long, it's just a must have for me to manage my packages this way.
+
+# pkg_add -l does the same!
+
+Wrong, `pkg_add -l` will install packages from a list but it won't delete packages not in the list.  This could be a feature to add in `pkg_add` one day.
