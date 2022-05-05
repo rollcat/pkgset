@@ -6,7 +6,7 @@
 
 Create a file `/etc/pkgset.conf` or files in `/etc/pkgset.conf.d/` listing a package per line, `pkgset` will make sure no extra packages (not counting dependencies) are installed or missing compared to your list.
 
-It does so by marking extra packages as "auto installed" and by installing missing packages, then run `pkg_delete -a` to get ride of unused packages (the one marked as auto installed) if they are not a dependency of another required package.
+It does so by marking extra packages as "auto installed" and by installing missing packages, then run `pkg_delete -a` to delete unused packages (the one marked as auto installed) if they are not a dependency of another required package.
 
 # How to install
 
