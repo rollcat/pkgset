@@ -22,3 +22,12 @@ After using NixOS too long, it's just a must have for me to manage my packages t
 # pkg_add -l does the same!
 
 Wrong, `pkg_add -l` will install packages from a list but it won't delete packages not in the list.  This could be a feature to add in `pkg_add` one day.
+
+# Todo?
+
+This is a list of ideas I have that could make `pkgset` better:
+
+- simulate mode to show what will be installed and removed
+- better error management (exit code, reporting errors, continue/abort)
+- try to find a way to pick a package if a result is ambiguous for `pkg_add`
+- reduce the lines of code
