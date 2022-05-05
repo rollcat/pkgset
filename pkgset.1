@@ -1,0 +1,52 @@
+.Dd $Mdocdate: May 5 2022 $
+.Dt PKGSET 1
+.Os
+.Sh NAME
+.Nm pkgset
+.Nd manage system packages in a declarative way
+.Sh SYNOPSIS
+.Nm
+.Sh DESCRIPTION
+.Pp
+.Nm
+is a program to manage the installed packages on the system in a
+declarative way.
+.Pp
+.Nm
+will check the packages declared but not installed, and will install them.
+Packages installed but not declared will be set as "auto
+installed", meaning they will be deleted at the end of the process
+if they are not a dependency of a listed packages.
+.Sh FILES
+Create a list of packages in
+.Pa /etc/pkgset.conf
+or add files to
+.Pa /etc/pkgset.conf.d/
+directory for include.
+.Pp
+Packages should be listed one per line and can be written in a format recognized by
+.Xr pkg_add 1
+, see BUGS for more explanations about flavors or version syntax.
+.Sh EXAMPLES
+The file
+.Pa /etc/pkgset.conf
+is used to define a few packages on this system, note the various syntax available
+to define a package version or a flavor.
+.Bd -literal -offset indent
+borgbackup--%1.2
+vim--no_x11
+xfce
+rlwrap
+.Ed
+.Sh SEE ALSO
+.Xr pkg_add 1
+.Sh HISTORY
+This software tries to make OpenBSD more declarative and ease system administrator work.
+.Sh AUTHORS
+.An See the LICENSE file for the authors .
+.Sh LICENSE
+See the LICENSE file for the terms of redistribution.
+.Sh BUGS
+Some packages may not be installed if you don't specify the version or flavor, like vim or borgbackup because
+.Xr pkg_add 1
+will tell the package is ambiguous when looking for a match.
