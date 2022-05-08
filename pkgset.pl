@@ -7,20 +7,26 @@ use Data::Dumper;
 # get the packages you want to have installed on the system
 sub get_declared_packages()
 {
-    my @pkg;
+    my @lines;
     if ( -d "/etc/pkgset.conf.d/" ) {
         my @result = `cat /etc/pkgset.conf.d/*`;
-        push @pkg, @result;
+        push @lines, @result;
     }
     if ( -f "/etc/pkgset.conf" ) {
         my @result = `cat /etc/pkgset.conf`;
-        push @pkg, @result;
+        push @lines, @result;
     }
-    for (@pkg) {
+    my @pkg;
+    for (@lines) {
         chomp;
+        # remove empty lines, and lines starting with a "#"
+        if ($_ =~ /^#|^$/) {
+            next;
+        }
         if ($_ !~ m/--/) {
             $_ .= "--";
         }
+        push @pkg, $_;
     }
     push @pkg, "quirks--"; #mandatory package
 
